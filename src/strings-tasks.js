@@ -469,9 +469,12 @@ function extractEmails(str) {
 function encodeToRot13(str) {
   const original = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const encoded = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  return str.replace(/[a-zA-Z]/g, function (c) {
+
+  function replaceChar(c) {
     return encoded[original.indexOf(c)];
-  });
+  }
+
+  return str.replace(/[a-zA-Z]/g, replaceChar);
 }
 
 /**
